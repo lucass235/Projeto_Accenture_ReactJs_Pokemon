@@ -1,5 +1,7 @@
 import React from 'react';
 
+// stage
+
 export default function Chart() {
   return (
     <div>

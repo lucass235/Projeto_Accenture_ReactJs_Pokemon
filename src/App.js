@@ -1,0 +1,24 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Login,
+  Home,
+  Cart,
+  NotFound,
+  Profile,
+} from './pages';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <Login /> } />
+        <Route path="/home" element={ <Home /> } />
+        <Route path="/carrinho" element={ <Cart /> } />
+        <Route path="/perfil" element={ <Profile /> } />
+        <Route path="*" element={ <NotFound /> } />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;

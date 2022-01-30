@@ -1,9 +1,15 @@
 import React from 'react';
 
+import * as S from './styles.js';
+import Header from '../../components/Header';
+
 export default function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Header />
+      <S.Container>
+        <h1>Home</h1>
+      </S.Container>
+    </>
   );
 };

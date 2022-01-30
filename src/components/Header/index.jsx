@@ -12,7 +12,7 @@ import Menu from '@mui/material/Menu';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
-import PokeCoin from '../../assets/pokemon.png';
+import PokeAPI from '../../assets/pokeapi-logo.png';
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -42,7 +42,7 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar style={ BOX_STYLES }>
-          <img height="40" src={ PokeCoin } />
+          <img height="40" src={ PokeAPI } />
           <Typography className="pointer" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Poke Market
           </Typography>

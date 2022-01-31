@@ -1,6 +1,13 @@
-import { createStore } from 'redux';
-import rootReducers from '../reducers/index';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-const store = createStore(rootReducers);
+import rootReducers from '../reducers/index';
+import rootSaga from '../sagas/pokemon.saga';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducers, applyMiddleware(sagaMiddleware));
 
 export default store;
+
+sagaMiddleware.run(rootSaga);

@@ -30,10 +30,6 @@ export default function Header() {
     setAnchorEl(event.currentTarget);
   };
 
-  // const toHome = () => {
-  //   history.push('/');
-  // };
-
   const handleMenuClick = (url) => {
     // history.push(url);
     setAnchorEl(null);
@@ -84,17 +80,17 @@ export default function Header() {
                 </div>
               ) : (
                 <div>
-                  <IconButton size="large" aria-label="show 4 new mails">
+                  <IconButton onClick={ () => navigate('/carrinho') } size="large" aria-label="show 4 new mails">
                     <Badge badgeContent={2} color="primary">
                       <ShoppingCartOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton size="large" aria-label="show 4 new mails">
+                  <IconButton onClick={ () => navigate('/perfil') } size="large" aria-label="show 4 new mails">
                     <Badge color="primary">
                       <AccountCircleOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton size="large">
+                  <IconButton onClick={ () => navigate('/') } size="large">
                     <Badge color="primary">
                       <LogoutOutlinedIcon />
                     </Badge>

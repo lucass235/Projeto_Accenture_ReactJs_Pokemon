@@ -1,16 +1,16 @@
-html {
+html 
+{
     height: 100%;
 }
 
-body {
+body 
+{
     min-height: 100%;
-}
-
-body {
     display: flex;
 }
 
-h1 {
+h1 
+{
     font-family: 'Cabin Sketch', cursive;
     font-size: 3em;
     text-align: center;
@@ -18,11 +18,13 @@ h1 {
     order: 1;
 }
 
-h1 small {
+h1 small 
+{
     display: block;
 }
 
-.site {
+.site 
+{
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -30,7 +32,7 @@ h1 small {
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
-  align-items: center;
+    align-items: center;
     flex-direction: column;
     margin: 0 auto;
     -webkit-box-pack: center;
@@ -41,7 +43,9 @@ h1 small {
     height: 100vh;
     width: 100vw;
 }
-.sketch {
+
+.sketch 
+{
   position: relative;
   height: 400px;
   min-width: 400px;
@@ -51,7 +55,8 @@ h1 small {
 
 }
 
-.bee-sketch {
+.bee-sketch 
+{
   height: 100%;
   width: 100%;
   position: absolute;
@@ -59,33 +64,38 @@ h1 small {
   left: 0;
 }
 
-.blue {
+.blue 
+{
   background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5f321b49-5fa7-407b-aaa0-cca6992d3d7c/d5s04qj-d26a072a-3294-4da7-8ab9-a1be78141275.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi81ZjMyMWI0OS01ZmE3LTQwN2ItYWFhMC1jY2E2OTkyZDNkN2MvZDVzMDRxai1kMjZhMDcyYS0zMjk0LTRkYTctOGFiOS1hMWJlNzgxNDEyNzUuZ2lmIn1dXX0.hiDasOecg6-_ze0YZLGVbl4nKudKH9jPepKtZqUlS48) no-repeat center center;
   opacity: 0;
-  animation: blue 3s linear infinite, opacityBlue 5s linear alternate infinite;
+  animation:opacityBlue 5s linear alternate infinite;
 }
 
 
-@media only screen and (min-width: 780px) {
-.site {
+@media only screen and (min-width: 780px) 
+{
+.site 
+  {
       flex-direction: row;
       padding: 1em 3em 1em 0em;
   }
 
-  h1 {
+  h1 
+  {
       text-align: right;
       order: 2;
       padding-bottom: 2em;
       padding-left: 2em;
-
   }
 
-  .sketch {
+  .sketch 
+  {
       order: 1;
   }
 }
 
-@keyframes opacityBlue {
+@keyframes opacityBlue 
+{
   from {
       opacity: 0
   }

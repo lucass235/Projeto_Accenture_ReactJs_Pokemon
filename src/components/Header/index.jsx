@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -17,6 +21,7 @@ import PokeAPI from '../../assets/pokeapi-logo.png';
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
   
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
@@ -42,9 +47,8 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar style={ BOX_STYLES }>
-          <img height="40" src={ PokeAPI } />
+          <img onClick={ () => navigate('/') } height="40" src={ PokeAPI } />
           <Typography className="pointer" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Poke Market
           </Typography>
             <div>
               {isMobile ? (
@@ -52,7 +56,6 @@ export default function Header() {
                    <IconButton
                     size="large"
                     edge="start"
-                    color="inherit"
                     onClick={handleMenu}
                     aria-label="menu"
                     sx={{ mr: 2 }}
@@ -74,15 +77,28 @@ export default function Header() {
                     open={open}
                     onClose={ () => setAnchorEl(null) }
                   >
-                    <MenuItem onClick={ () => handleMenuClick('/') }>Home</MenuItem>
-                    <MenuItem onClick={ () => handleMenuClick('/geracoes') }>Gerações</MenuItem>
-                    <MenuItem onClick={ () => handleMenuClick('/categorias') }>Categorias</MenuItem>
-                    <MenuItem onClick={ () => handleMenuClick('/sobre') }>Sobre</MenuItem>
+                    <MenuItem >Carrinho</MenuItem>
+                    <MenuItem >Perfil</MenuItem>
+                    <MenuItem >Deslogar</MenuItem>
                   </Menu>
                 </div>
               ) : (
                 <div>
-                  <Link className="nav-links" to="/">Home</Link>
+                  <IconButton size="large" aria-label="show 4 new mails">
+                    <Badge badgeContent={2} color="primary">
+                      <ShoppingCartOutlinedIcon />
+                    </Badge>
+                  </IconButton>
+                  <IconButton size="large" aria-label="show 4 new mails">
+                    <Badge color="primary">
+                      <AccountCircleOutlinedIcon />
+                    </Badge>
+                  </IconButton>
+                  <IconButton size="large">
+                    <Badge color="primary">
+                      <LogoutOutlinedIcon />
+                    </Badge>
+                  </IconButton>
                 </div>
               )}
             </div>

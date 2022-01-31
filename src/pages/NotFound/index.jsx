@@ -5,11 +5,11 @@ export default function NotFound() {
   return (
     <div class="site">
     <div class="sketch">
-        <div class="bee-sketch blue"></div>
+        <div class="bee-sketch Pokebola"></div>
     </div>
 
-<h1>404:
-    <small>Pokemon not found</small></h1>
-</div>
+        <h1 className='text'>404
+        <span className='text1'>Pokemon not found</span><a className='gohome' href="../home">Back to home</a></h1>
+    </div>
   );
 };

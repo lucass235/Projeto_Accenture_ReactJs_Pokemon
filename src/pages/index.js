@@ -5,6 +5,7 @@ import Loading from './Loading';
 import Login from './Login';
 import NotFound from './NotFound';
 import Profile from './Profile';
+import Register from './Register';
 
 export {
   Cart,
@@ -13,5 +14,6 @@ export {
   Loading, 
   Login,
   NotFound,
-  Profile
+  Profile,
+  Register
 };

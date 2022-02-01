@@ -9,7 +9,12 @@ const GRID_STYLES = {
     paddingTop: '100px',
   };
 export default function pokemonCard({ pokemons, visible, setVisible }) {
-  const pokemonId = pokemons[0].url.match(/\d+/g).slice(1)[0];
+
+  const renderRandomPrice = () => {
+    return new Intl.NumberFormat('pt-br',
+    { style: 'currency', currency: 'BRL' })
+      .format(Math.floor(Math.random() * 100000) + 1)
+  };
 
   const showMorePokemons = () => {
     setVisible((prevValues) => prevValues + 3);
@@ -29,9 +34,8 @@ export default function pokemonCard({ pokemons, visible, setVisible }) {
                 <S.Title>{pokemon.name}</S.Title>
                 <S.Details>+detalhes</S.Details>
                 <S.Price>
-                  {new Intl.NumberFormat('pt-br',
-                  { style: 'currency', currency: 'BRL' })
-                    .format(Math.floor(Math.random() * 100000) + 1)}</S.Price>
+                  { renderRandomPrice() }
+                </S.Price>
               </div>
               <S.AddChartBtn>Adicionar no carrinho</S.AddChartBtn>
             </S.Card>

@@ -55,17 +55,3 @@ export const AddChartBtn = styled.button`
   cursor: pointer;
   border: none;
 `;
-
-export const Button = styled.button`
-  background-color: #F2243A;
-  color: #FFF;
-
-  width: 200px;
-  height: 50px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-weight: bold;
-
-  border: none;
-  border-radius: 20px;
-`;

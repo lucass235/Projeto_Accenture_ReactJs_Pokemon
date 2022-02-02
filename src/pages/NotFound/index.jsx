@@ -1,9 +1,15 @@
 import React from 'react';
+import style from './style.css'
 
 export default function NotFound() {
   return (
-    <div>
-      <h1>Página não encontrada</h1>
+    <div class="site">
+    <div class="sketch">
+        <div class="bee-sketch Pokebola"></div>
+    </div>
+
+        <h1 className='text'>404
+        <span className='text1'>Pokemon not found</span><a className='gohome' href="../home">Back to home</a></h1>
     </div>
   );
 };

@@ -1,0 +1,114 @@
+.text
+{
+    display: block;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 3em;
+    text-align: center;
+    opacity: .8;
+    order: 1;
+}
+
+.text1 
+{
+    display: block;
+}
+
+.gohome 
+{
+    margin-top: 50px;
+    padding: 10px;
+    font-size: 0.5em;
+    border: 2px solid rgb(190, 190, 190);
+    text-decoration: none;
+    color: #333333;
+    border-radius: 8px;
+
+}
+
+.site 
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: hidden;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sketch 
+{
+  position: relative;
+  height: 400px;
+  min-width: 400px;
+  margin: 0;
+  overflow: visible;
+  order: 2;
+
+}
+
+.bee-sketch 
+{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Pokebola 
+{
+  background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5f321b49-5fa7-407b-aaa0-cca6992d3d7c/d5s04qj-d26a072a-3294-4da7-8ab9-a1be78141275.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi81ZjMyMWI0OS01ZmE3LTQwN2ItYWFhMC1jY2E2OTkyZDNkN2MvZDVzMDRxai1kMjZhMDcyYS0zMjk0LTRkYTctOGFiOS1hMWJlNzgxNDEyNzUuZ2lmIn1dXX0.hiDasOecg6-_ze0YZLGVbl4nKudKH9jPepKtZqUlS48) no-repeat center center;
+  opacity: 0;
+  animation:opacityPokebola 5s linear alternate infinite;
+}
+
+
+@media only screen and (min-width: 780px) 
+{
+.site 
+  {
+      flex-direction: row;
+      padding: 1em 3em 1em 0em;
+  }
+
+  .text 
+  {
+      text-align: right;
+      order: 2;
+      padding-bottom: 2em;
+      padding-left: 2em;
+  }
+
+  .sketch 
+  {
+      order: 1;
+  }
+}
+
+@keyframes opacityPokebola 
+{
+  from {
+      opacity: 0
+  }
+  25% {
+      opacity: 0
+  }
+  75% {
+      opacity: 1
+  }
+  to {
+      opacity: 1
+  }
+}

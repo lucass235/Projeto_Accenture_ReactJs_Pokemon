@@ -9,7 +9,7 @@ export const NamePokemon = styled.h1`
 export const DescriptionPokemon = styled.h3`
   font-size: 14px;
   text-align: center;
-  color: #717171;
+  color: #717171;;
 `;
 
 export const Modal = styled.div`
@@ -40,7 +40,7 @@ export const Window = styled.div`
   flex-direction: row;
 `;
 export const BoxRight = styled.div`
-  background-color: #dddddd;
+  background-color: #DDDDDD;
   display: flex;
   /* flex-wrap: wrap; */
   flex-direction: column;
@@ -66,9 +66,10 @@ export const Button = styled.button`
   padding: 15px 32px;
   text-align: center;
   font-size: 16px;
-  color: #ffffff;
-  margin-left: 10px;
+  color: #FFFFFF;
+  margin-left: 5px;
   cursor: pointer;
+  border: none;
 `;
 
 export const IconCloser = styled.div`
@@ -82,7 +83,7 @@ export const IconCloser = styled.div`
 export const Card = styled.div`
   display: flex;
   align-items: center;
-  margin: 180px auto;
+  margin: 250px auto;
 `;
 
 export const Price = styled.div`

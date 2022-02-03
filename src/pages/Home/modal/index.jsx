@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import * as S from "./style";
-// import { BsXLg } from 'react-icons/bs';
+import { BsXLg } from 'react-icons/bs';
 
 function ModalDetails ({ pokemon, price, close }) {
     const [pokemonInfo, setPokemonInfo] = useState();
@@ -24,11 +24,11 @@ function ModalDetails ({ pokemon, price, close }) {
                     <S.Pokemon src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.url.match(/\d+/g).slice(1)[0]}.png`} alt={`imagem do pokemon ${pokemon.name}`} /> 
                 </S.BoxLeft>
                 <S.BoxRight>
-            <S.IconCloser onClick={ close }> x </S.IconCloser>
+            <S.IconCloser onClick={ close }> <BsXLg/> </S.IconCloser>
             <S.NamePokemon>{ pokemon.name }</S.NamePokemon>
-            <div>
+            <S.DescriptionPokemon>
                 <p>{pokemonInfo?.stats[0].base_stat}</p>
-            </div>
+            </S.DescriptionPokemon>
             <S.Card> 
                 <S.Price>
                     { price }

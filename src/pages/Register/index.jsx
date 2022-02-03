@@ -6,6 +6,7 @@ import {FormControl, Button, TextField, MenuItem}  from '@mui/material';
 import logo from './Assets/logo.png'
 import * as yup from 'yup';
 import getValidationErros from '../../constants/getValidationError';
+import {countries, gens} from '../../constants/lists' 
 
 
 export default function Register() {
@@ -22,7 +23,6 @@ export default function Register() {
     seterrorEmail(false)
     seterrorPasswd(false)
     seterrorName(false)
-
     const data = {
       name: document.getElementById("registroNome").value,
       email: document.getElementById("registroEmail").value,
@@ -69,45 +69,7 @@ export default function Register() {
     }
     console.log(errors)
   }
-  },[]);
-
-  const gens = [
-    {
-      value: 'fem',
-      label: 'Feminino',
-    },
-    {
-      value: 'mas',
-      label: 'Masculino',
-    },
-    {
-      value: 'others',
-      label: 'Outros',
-    },
-    {
-      value: 'nDeclarar',
-      label: 'Prefiro não declarar',
-    },
-  ];
-
-  const countries = [
-    {
-      value: 'BR',
-      label: 'Brasil',
-    },
-    {
-      value: 'US',
-      label: 'Estados Unidos',
-    },
-    {
-      value: 'JP',
-      label: 'Japão',
-    },
-    {
-      value: 'PT',
-      label: 'Portugal',
-    },
-  ];
+  },[seterrorEmail, seterrorPasswd, seterrorName, gen, country, errorName, errorPasswd, errorEmail]);
 
   const handleChange = (event) => {
     setGen(event.target.value);

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
+import Background from './Assets/Background.png'
 
 
 export const Styled = {
 
   Container: styled.div`
-      margin: 0px;
       width: 100vw;
       height: 100vh;
-      background-color:#D6E8F3; 
+      background:url(${Background}); 
       background-size: cover;
       display: flex;
       align-items: center;

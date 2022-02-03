@@ -18,10 +18,10 @@ export default function Chart() {
             <TextField label={'Senha'} types="password" id="loginSenha" margin="dense" />
           </FormControl>
             <Styled.ButtonLoginContent>
-              <Button variant="outlined" size="medium" color="success">
+              <Button variant="outlined" size="medium" color="error">
                 Entrar
               </Button>
-              <Button variant="outlined" size="medium" color="success">
+              <Button variant="outlined" size="medium" color="error">
                 Cadastro
               </Button>
             </Styled.ButtonLoginContent>

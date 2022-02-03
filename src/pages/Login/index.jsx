@@ -17,10 +17,10 @@ export default function Chart() {
             <Styled.Paragrafo href="/">Esqueci minha senha</Styled.Paragrafo>
           </FormControl>
             <Styled.ButtonLoginContent>
-              <Button variant="outlined" size="medium" color="success">
+              <Button variant="outlined" size="medium" color="error">
                 Entrar
               </Button>
-              <Button variant="outlined" size="medium" color="success">
+              <Button variant="outlined" size="medium" color="error">
                 Cadastro
               </Button>
             </Styled.ButtonLoginContent>

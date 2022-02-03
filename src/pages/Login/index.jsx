@@ -1,11 +1,12 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
 import { Formik } from 'formik';
 import {FormControl, Button, TextField, Box, RedBar}  from '@mui/material';
 import logo from './Assets/logo.png'
 
-
 export default function Chart() {
+  const navigate = useNavigate();
     return (
       <>
         <Styled.Container>
@@ -16,14 +17,14 @@ export default function Chart() {
             <TextField label={'Senha'} types="password" id="loginSenha" margin="dense" />
             <Styled.Paragrafo href="/">Esqueci minha senha</Styled.Paragrafo>
           </FormControl>
-            <Styled.ButtonResgistrarContent>
-              <Button variant="outlined" size="medium" color="error">
+            <Styled.ButtonLoginContent>
+              <Button onClick={ () => navigate('/home') } variant="outlined" size="medium" color="error">
                 Entrar
               </Button>
-              <Button variant="outlined" size="medium" color="error">
+              <Button onClick={ () => navigate('/register') } variant="outlined" size="medium" color="error">
                 Cadastro
               </Button>
-            </Styled.ButtonResgistrarContent>
+            </Styled.ButtonLoginContent>
           </Styled.Content>
         </Styled.Container>
       </>

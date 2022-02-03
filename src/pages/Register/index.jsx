@@ -2,28 +2,28 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
 import { Formik } from 'formik';
-import {FormControl, Button, TextField, Box, RedBar}  from '@mui/material';
+import {FormControl, Button, TextField}  from '@mui/material';
 import logo from './Assets/logo.png'
-import Header from '../../components/Header';
+
 
 export default function Chart() {
   const navigate = useNavigate();
     return (
       <>
-      {/* <Header /> */}
         <Styled.Container>
           <Styled.Content>
-          <img src={logo} width="30%" alt="" /> 
+          <img src={logo} width="30%" alt="" />
           <FormControl style={{width:'90%'}} >
-            <TextField label={'E-mail'} type="mail" id="loginEmail" margin="dense" />
-            <TextField label={'Senha'} types="password" id="loginSenha" margin="dense" />
+            <TextField label={'Nome'} type="text" id="registroNome" margin="dense" /> 
+            <TextField label={'E-mail'} type="mail" id="registroEmail" margin="dense" />
+            <TextField label={'Senha'} types="password" id="registroSenha" margin="dense" />
           </FormControl>
             <Styled.ButtonLoginContent>
               <Button onClick={ () => navigate('/home') } variant="outlined" size="medium" color="error">
-                Entrar
+                Cadastrar
               </Button>
-              <Button onClick={ () => navigate('/register') } variant="outlined" size="medium" color="error">
-                Cadastro
+              <Button onClick={ () => navigate('/') } variant="outlined" size="medium" color="error">
+                Voltar
               </Button>
             </Styled.ButtonLoginContent>
           </Styled.Content>

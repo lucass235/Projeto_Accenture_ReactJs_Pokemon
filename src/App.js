@@ -6,6 +6,7 @@ import { Login,
   Cart,
   NotFound,
   Profile,
+  Register,
 } from './pages';
 
 import { GlobalStyle } from './styles/GlobalStyle'
@@ -18,6 +19,7 @@ function App() {
         <Route path="/home" element={ <Home /> } />
         <Route path="/carrinho" element={ <Cart /> } />
         <Route path="/perfil" element={ <Profile /> } />
+        <Route path="/register" element={ <Register /> } />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
       <GlobalStyle />

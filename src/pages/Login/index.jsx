@@ -14,6 +14,7 @@ export default function Chart() {
           <FormControl style={{width:'90%'}} >
             <TextField label={'E-mail'} type="mail" id="loginEmail" margin="dense" />
             <TextField label={'Senha'} types="password" id="loginSenha" margin="dense" />
+            <Styled.Paragrafo href="/">Esqueci minha senha</Styled.Paragrafo>
           </FormControl>
             <Styled.ButtonLoginContent>
               <Button variant="outlined" size="medium" color="success">

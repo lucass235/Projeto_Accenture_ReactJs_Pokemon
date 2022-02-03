@@ -36,4 +36,13 @@ export const Styled = {
         justify-content: center;
         margin-bottom: 5px;
     `,
+
+    Paragrafo: styled.a`
+        font-size: 12px;
+        text-align: center;
+        font-family: Arial;
+        margin: 5px;
+        color: #808080;
+        text-decoration: none;
+    `,
 };

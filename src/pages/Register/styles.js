@@ -16,7 +16,7 @@ export const Styled = {
   `,
   Content: styled.div`
       width: 25rem;
-      height: 30rem;
+      height: 35rem;
       margin-top: 5rem;
       box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
       border-radius: 6px;
@@ -46,4 +46,12 @@ export const Styled = {
         color: #808080;
         text-decoration: none;
     `,
+        FormRegistro : styled.div `
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
+        gap: 20px;
+        margin-top: 10px;
+    `,
+
 };

@@ -17,7 +17,6 @@
 - [Emerson](https://github.com/Emerson-javax)
 - [Lucas dos Santos Amorim Rêgo](https://github.com/lucass235)
 - [Milena](https://github.com/m-carecho)
-- [Tatiany](https://github.com/Tatianydev)
 
 ## ✨ Tecnologias
 

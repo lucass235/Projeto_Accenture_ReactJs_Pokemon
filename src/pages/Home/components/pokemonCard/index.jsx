@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import * as S from './style';
+import { ADD_POKEMON_CART } from '../../../../constants/';
+import ModalDetails from '../../modal';
 
-export default function pokemonCard({ pokemon, price }) {
+function PokemonCard({ pokemon, price }) {
+  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const pokemonId = pokemon.url.match(/\d+/g).slice(1)[0];
+
+  const handleClick = () => {
+    dispatch({ type: ADD_POKEMON_CART, payload: { pokemon, price, pokemonId } });
+  };
   
   return (
     <S.Wrapper>
         <S.Card>
           <img
-              src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.url.match(/\d+/g).slice(1)[0]}.png`}
+              src={`https://cdn.traction.one/pokedex/pokemon/${pokemonId}.png`}
               style={{ width: '150px' }}
           />
               <div>
@@ -16,8 +26,11 @@ export default function pokemonCard({ pokemon, price }) {
                 <S.Details>+detalhes</S.Details>
                 <S.Price>{ price }</S.Price>
               </div>
-              <S.AddChartBtn>Adicionar no carrinho</S.AddChartBtn>
+              <S.AddChartBtn onClick={ handleClick } >Adicionar no carrinho</S.AddChartBtn>
+              {visible ? <ModalDetails close={ () => setVisible(false) } price={price} pokemon={pokemon} /> : null }
             </S.Card>
     </S.Wrapper>
   );
 };
+
+export default PokemonCard;

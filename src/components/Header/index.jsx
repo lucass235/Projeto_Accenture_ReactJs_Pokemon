@@ -30,10 +30,26 @@ export default function Header() {
     setAnchorEl(event.currentTarget);
   };
 
+  const isAuthenticader = localStorage.getItem("Autenticado");
+
   const handleMenuClick = (url) => {
     // history.push(url);
     setAnchorEl(null);
   };
+
+  const handleLogout = () =>{
+    localStorage.setItem("Autenticado", "false")
+    navigate('/')
+
+  };
+
+  const handlePerfil = () =>{
+    if (isAuthenticader === "false"){
+      navigate('/')
+    } else if (isAuthenticader === "true"){
+      navigate('/perfil')
+    }
+  }
 
   const BOX_STYLES = {
     backgroundColor: '#FFF',
@@ -85,16 +101,16 @@ export default function Header() {
                       <ShoppingCartOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton onClick={ () => navigate('/perfil') } size="large" aria-label="show 4 new mails">
+                  <IconButton onClick={ () => handlePerfil() } size="large" aria-label="show 4 new mails">
                     <Badge color="primary">
                       <AccountCircleOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton onClick={ () => navigate('/') } size="large">
+                  { isAuthenticader === "true" ?  <IconButton onClick={ () => handleLogout() } size="large">
                     <Badge color="primary">
                       <LogoutOutlinedIcon />
                     </Badge>
-                  </IconButton>
+                  </IconButton> : null}
                 </div>
               )}
             </div>

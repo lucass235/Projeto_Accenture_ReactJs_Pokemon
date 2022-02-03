@@ -5,6 +5,7 @@ import { Login,
   Cart,
   NotFound,
   Profile,
+  Register,
 } from './pages';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" element={ <Home /> } />
         <Route path="/carrinho" element={ <Cart /> } />
         <Route path="/perfil" element={ <Profile /> } />
+        <Route path="/register" element={ <Register /> } />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
     </BrowserRouter>

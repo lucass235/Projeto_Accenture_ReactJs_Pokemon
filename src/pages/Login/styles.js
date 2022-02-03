@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Background from './Assets/Background.png'
+
 
 export const Styled = {
 

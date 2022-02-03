@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import * as S from './style';
+import ModalDetails from '../../modal';
 
-export default function pokemonCard({ pokemon, price }) {
-  
+function PokemonCard({ pokemon, price }) {
+  const [visible, setVisible] = useState(false);
+
   return (
     <S.Wrapper>
         <S.Card>
@@ -13,11 +15,14 @@ export default function pokemonCard({ pokemon, price }) {
           />
               <div>
                 <S.Title>{pokemon.name}</S.Title>
-                <S.Details>+detalhes</S.Details>
+                <S.Details onClick={ () => setVisible(true) }>+detalhes</S.Details>
                 <S.Price>{ price }</S.Price>
               </div>
               <S.AddChartBtn>Adicionar no carrinho</S.AddChartBtn>
+              {visible ? <ModalDetails close={ () => setVisible(false) } price={price} pokemon={pokemon} /> : null }
             </S.Card>
     </S.Wrapper>
   );
 };
+
+export default PokemonCard;

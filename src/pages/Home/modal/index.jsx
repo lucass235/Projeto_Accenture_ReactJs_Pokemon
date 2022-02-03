@@ -1,27 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import * as S from "./style";
-import { BsXLg} from 'react-icons/bs';
+// import { BsXLg } from 'react-icons/bs';
 
-function ModalDetails ({close}) {
-    function addCarrinho () {
-        alert("Adicionado ao carrinho");
-        close();
-    }
+function ModalDetails ({ pokemon, price, close }) {
+    const [pokemonInfo, setPokemonInfo] = useState();
+   
+   
+    // function addCarrinho () {
+    //     alert("Adicionado ao carrinho");
+    // }
+
+    useEffect(() => {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.url.match(/\d+/g).slice(1)[0]}`)
+            .then(res => setPokemonInfo(res.data))
+            .catch(err => console.log(err));
+    }, []);
+
     return (
         <S.Modal>
             <S.Window>
                 <S.BoxLeft>
-                    <S.Pokemon src="https://www.pngmart.com/files/2/Pikachu-PNG-Transparent-Image.png" alt=""/> 
+                    <S.Pokemon src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.url.match(/\d+/g).slice(1)[0]}.png`} alt={`imagem do pokemon ${pokemon.name}`} /> 
                 </S.BoxLeft>
                 <S.BoxRight>
-            <S.IconCloser onClick={close}> <BsXLg/> </S.IconCloser>
-            <S.NamePokemon>Pikachu</S.NamePokemon>
-            <S.DescriptionPokemon>Detalhes pokemon</S.DescriptionPokemon>
+            <S.IconCloser onClick={ close }> x </S.IconCloser>
+            <S.NamePokemon>{ pokemon.name }</S.NamePokemon>
+            <div>
+                <p>{pokemonInfo?.stats[0].base_stat}</p>
+            </div>
             <S.Card> 
                 <S.Price>
-                    R$100,00
+                    { price }
                 </S.Price>
-            <S.Button onClick={addCarrinho}>Adicionar ao carrinho</S.Button>
+            <S.Button>Adicionar ao carrinho</S.Button>
             </S.Card>
             </S.BoxRight>
             </S.Window>

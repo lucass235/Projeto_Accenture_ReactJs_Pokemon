@@ -16,7 +16,6 @@ export const Styled = {
   Content: styled.div`
       width: 25rem;
       height: 25rem;
-      margin-top: 5rem;
       box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
       border-radius: 6px;
       background: #fff;

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as S from './style';
 import { ADD_POKEMON_CART } from '../../../../constants/';
 import ModalDetails from '../../modal';
+import axios from 'axios';
 
 function PokemonCard({ pokemon, price }) {
   const [visible, setVisible] = useState(false);
@@ -23,10 +24,13 @@ function PokemonCard({ pokemon, price }) {
           />
               <div>
                 <S.Title>{pokemon.name}</S.Title>
-                <S.Details>+detalhes</S.Details>
+                <S.Details onClick={ () => {
+                  setVisible(true);
+                } }>+detalhes</S.Details>
                 <S.Price>{ price }</S.Price>
               </div>
               <S.AddChartBtn onClick={ handleClick } >Adicionar no carrinho</S.AddChartBtn>
+
               {visible ? <ModalDetails close={ () => setVisible(false) } price={price} pokemon={pokemon} /> : null }
             </S.Card>
     </S.Wrapper>

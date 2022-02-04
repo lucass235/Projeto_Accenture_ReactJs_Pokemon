@@ -56,14 +56,13 @@ export default function Chart() {
 
     return (
       <>
-      
         <Styled.Container> 
           <Styled.Content>
           <img src={logo} width="30%" alt="" /> 
           <FormControl style={{width:'90%'}}  >
           {errorEmail ? <TextField label={'E-mail'} type="email" id="loginEmail" error helperText="Incorrect entry" margin="dense" /> : <TextField label={'E-mail'} type="email" id="loginEmail" margin="dense" /> }
           {errorPasswd ? <TextField label={'Senha'} type="password" id="loginSenha" error helperText="Incorrect entry" margin="dense" /> : <TextField label={'Senha'} type="password" id="loginSenha" margin="dense" />}
-            <Styled.Paragrafo href="/">Esqueci minha senha</Styled.Paragrafo>
+          <Styled.Paragrafo href="/">Esqueci minha senha</Styled.Paragrafo>
           </FormControl>
             <Styled.ButtonLoginContent>
               <Button onClick={ () => authentication() } variant="outlined" size="medium" color="error">

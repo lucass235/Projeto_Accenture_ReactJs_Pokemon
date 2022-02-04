@@ -88,6 +88,8 @@ export default function Register() {
           <FormControl style={{width:'90%'}} >
             { errorName ? <TextField label={'Nome'} type="text" id="registroNome" margin="dense" error helperText="Incorrect entry."/> : 
             <TextField label={'Nome'} type="text" id="registroNome" margin="dense"/> }
+            { errorEmail ? <TextField label={'E-mail'} type="email" id="registroEmail" margin="dense" error helperText="Incorrect entry." /> : <TextField label={'E-mail'} type="email" id="registroEmail"  margin="dense" /> }
+            { errorPasswd ? <TextField label={'Senha'} type="password" id="registroSenha" margin="dense"  error helperText="Incorrect entry." /> : <TextField label={'Senha'} type="password" id="registroSenha" margin="dense" />}
             <Styled.FormRegistro>
                 <TextField
                   id="registroGenero"
@@ -117,13 +119,10 @@ export default function Register() {
                     </MenuItem>
                   ))}
                 </TextField>
-                
             </Styled.FormRegistro>
-            { errorEmail ? <TextField label={'E-mail'} type="email" id="registroEmail" margin="dense" error helperText="Incorrect entry." /> : <TextField label={'E-mail'} type="email" id="registroEmail"  margin="dense" /> }
-            { errorPasswd ? <TextField label={'Senha'} type="password" id="registroSenha" margin="dense"  error helperText="Incorrect entry." /> : <TextField label={'Senha'} type="password" id="registroSenha" margin="dense" />}
           </FormControl>
             <Styled.ButtonLoginContent>
-              <Button onClick={ () => authentication()} variant="outlined" size="medium" color="error">
+              <Button href="" onClick={ () => authentication()} variant="outlined" size="medium" color="error">
                 Cadastrar
               </Button>
               <Button onClick={ () => navigate('/') } variant="outlined" size="medium" color="error">

@@ -15,10 +15,28 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-
+import Modal from 'react-modal';
 import PokeAPI from '../../assets/pokeapi-logo.png';
+import Styled from './styles.js';
+import { Button, TextField } from '@mui/material';
 
-export default function Header() {
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: '11'
+  },
+  overlay: {  
+  zIndex: '10'
+  },
+};
+
+export default function Header({handleOpen}) {
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
@@ -47,15 +65,61 @@ export default function Header() {
     if (isAuthenticader === "false"){
       navigate('/')
     } else if (isAuthenticader === "true"){
-      navigate('/perfil')
+      handleOpenProfile()
     }
+  }
+   
+  const handleOpenProfile = () => {
+    setIsOpen(true)
   }
 
   const BOX_STYLES = {
     backgroundColor: '#FFF',
   };
 
+  const users = JSON.parse(localStorage.getItem("users"))
+  console.log(users)
+
   return (
+    <>
+    {/* Modal do perfil */}
+    <Modal
+    isOpen={modalIsOpen}
+    onRequestClose={() => {setIsOpen(false)}}
+    style={customStyles}
+    contentLabel="Example Modal"
+  >
+    
+    <Styled.Close onClick={() => {setIsOpen(false)}}>X</Styled.Close>
+    <Styled.Title>Dados pessoais</Styled.Title>
+    <Styled.Container>
+      <Styled.Avatar_Container>
+      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tgQ6O5s4XE6-Q7ItFa-pLoNhk4zQF464CQ&usqp=CAU'} />
+      </Styled.Avatar_Container>
+      <Styled.ContentForm>
+      <TextField id="perfilNome" label="Nome" variant="outlined" />
+      <TextField id="perfilGenero" label="Gênero" variant="outlined" />
+      <Styled.Buttom>
+      <Button variant="outlined" size="medium" color="error">
+        Salvar
+      </Button>
+      </Styled.Buttom>
+      </Styled.ContentForm>
+      <Styled.ContentForm>
+      <TextField id="perfilOrigem" label="Origem" variant="outlined" />
+      <TextField id="funçãoOrigem" label="Função" variant="outlined" />
+      <Styled.Buttom>
+      <Button onClick={ () => navigate('/home') } variant="outlined" size="medium" color="error">
+        Voltar
+      </Button>
+      </Styled.Buttom>
+      </Styled.ContentForm>
+      
+      
+      
+    </Styled.Container>
+  </Modal>
+
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar style={ BOX_STYLES }>
@@ -117,5 +181,6 @@ export default function Header() {
         </Toolbar>
       </AppBar>
     </Box>
+    </>
   );
 }

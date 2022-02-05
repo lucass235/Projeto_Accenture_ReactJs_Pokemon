@@ -1,3 +1,3 @@
-import { getPokemons } from './pokemonsAction';
+import { addPokemon } from './pokemonsAction';
 
-export { getPokemons };
+export { addPokemon };

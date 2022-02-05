@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -22,6 +23,7 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const { cart } = useSelector(state => state.pokemon);
   
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
@@ -30,10 +32,26 @@ export default function Header() {
     setAnchorEl(event.currentTarget);
   };
 
+  const isAuthenticader = localStorage.getItem("Autenticado");
+
   const handleMenuClick = (url) => {
-    // history.push(url);
+    navigate(url);
     setAnchorEl(null);
   };
+
+  const handleLogout = () =>{
+    localStorage.setItem("Autenticado", "false")
+    navigate('/')
+
+  };
+
+  const handlePerfil = () =>{
+    if (isAuthenticader === "false"){
+      navigate('/')
+    } else if (isAuthenticader === "true"){
+      navigate('/perfil')
+    }
+  }
 
   const BOX_STYLES = {
     backgroundColor: '#FFF',
@@ -73,28 +91,28 @@ export default function Header() {
                     open={open}
                     onClose={ () => setAnchorEl(null) }
                   >
-                    <MenuItem >Carrinho</MenuItem>
-                    <MenuItem >Perfil</MenuItem>
-                    <MenuItem >Deslogar</MenuItem>
+                    <MenuItem onClick={ () => handleMenuClick('../carrinho') } >Carrinho</MenuItem>
+                    <MenuItem onClick={ () => handleMenuClick('../perfil') } >Perfil</MenuItem>
+                    <MenuItem onClick={ () => handleMenuClick('/j') } >Deslogar</MenuItem>
                   </Menu>
                 </div>
               ) : (
                 <div>
                   <IconButton onClick={ () => navigate('/carrinho') } size="large" aria-label="show 4 new mails">
-                    <Badge badgeContent={2} color="primary">
+                    <Badge badgeContent={cart.length} color="primary">
                       <ShoppingCartOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton onClick={ () => navigate('/perfil') } size="large" aria-label="show 4 new mails">
+                  <IconButton onClick={ () => handlePerfil() } size="large" aria-label="show 4 new mails">
                     <Badge color="primary">
                       <AccountCircleOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  <IconButton onClick={ () => navigate('/') } size="large">
+                  { isAuthenticader === "true" ?  <IconButton onClick={ () => handleLogout() } size="large">
                     <Badge color="primary">
                       <LogoutOutlinedIcon />
                     </Badge>
-                  </IconButton>
+                  </IconButton> : null}
                 </div>
               )}
             </div>

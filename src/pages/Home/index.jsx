@@ -50,7 +50,6 @@ export default function Home() {
           <Header />
 
           <S.Container>
-
             <Grid style={ GRID_STYLES } container spacing={4}>
               {pokemons && pokemons.slice(0, visible).map((pokemon, idx) => (
                 <Grid key={idx} item xs={12} sm={6} md={4}>

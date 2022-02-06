@@ -27,7 +27,11 @@ function PokemonCard({ pokemon, price }) {
                 <S.Details onClick={ () => {
                   setVisible(true);
                 } }>+detalhes</S.Details>
-                <S.Price>{ price }</S.Price>
+                <S.Price>
+                  { new Intl.NumberFormat('pt-br',
+                      { style: 'currency', currency: 'BRL' })
+                        .format(price) }
+                </S.Price>
               </div>
               <S.AddChartBtn onClick={ handleClick } >Adicionar no carrinho</S.AddChartBtn>
 

@@ -28,13 +28,15 @@ export default function Cart() {
     dispatch({ type: DELETE_POKEMON_CART, payload: pokemon })
   }
 
-  const teste = cart.map(pokemon => {
-    return (Number(cart[0].price.substring(3, cart[0].price[cart[0].length])) * pokemon.quantity)
-  })
+  // const teste = cart.map(pokemon => {
+  //   return (pokemon.price * pokemon.quantity)
+  // })
 
-  console.log(cart[0].price.substring(3, cart[0].price[cart[0]]))
+  const total = cart.reduce((sumTotal, pokemon) => {
+    return sumTotal + pokemon.price * pokemon.quantity;
+  }, 0);
 
-  console.log(teste)
+  console.log(total)
 
   function priceFormat(value) {
     return Intl.NumberFormat(
@@ -96,7 +98,7 @@ export default function Cart() {
                       </td>
                       {/*Preço do Pokemon*/}
                       <td className='price-container'>
-                        <span>{pokemon.price}</span>
+                        <span>{priceFormat(pokemon.price)}</span>
                       </td>
                       {/*Subtotal*/}
                       <td className="subtotal-container">
@@ -123,7 +125,7 @@ export default function Cart() {
                         </button>
                         <div>
                           <p>Total:</p>
-                          <strong>{priceFormat(teste)}</strong>
+                          <strong>{priceFormat(total)}</strong>
                         </div>
                       </div>
                     </td>

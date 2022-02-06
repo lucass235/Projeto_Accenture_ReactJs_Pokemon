@@ -90,7 +90,7 @@ export const Styled = {
     width: 2.4rem;
   }
 `,
-AmountButton: styled.button`
+  AmountButton: styled.button`
     width: 2rem;
     height: 2rem;
     background: none;

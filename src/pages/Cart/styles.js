@@ -6,10 +6,10 @@ export const Styled = {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background: #bfbfbf;
+    background: #b7b7b7;
     h1 {
       margin: 2rem 0;
-      font-family: 'Montserrat-Bold';
+      font-family: 'Times New Roman';
       font-size: 18px;
       color: "#717171";
       padding: 0.5rem;
@@ -31,6 +31,7 @@ export const Styled = {
         }
       }
     }
+
   `,
 
   Content: styled.div`

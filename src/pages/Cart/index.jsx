@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header'
 import { Styled } from './styles'
 import { useNavigate } from 'react-router-dom'
 import { FiPlusCircle, FiMinusCircle, FiTrash } from "react-icons/fi";
 import { useSelector, useDispatch } from 'react-redux';
+import Modal from './modal'
 import { INCREASE_QUANTITY, DECREASE_QUANTITY, DELETE_POKEMON_CART } from '../../constants';
-import { Style } from '@mui/icons-material';
 
 export default function Cart() {
 
   const dispatch = useDispatch();
+
+  const [visible, setVisible] = useState(false);
 
   const { cart } = useSelector(state => state.pokemon)
   console.log(cart)
@@ -45,6 +47,8 @@ export default function Cart() {
       currency: 'BRL',
     }).format(value);
   }
+
+
 
   return (
 
@@ -102,13 +106,13 @@ export default function Cart() {
                       </td>
                       {/*Subtotal*/}
                       <td className="subtotal-container">
-                        <span></span>
+                        <span>{priceFormat(pokemon.price * pokemon.quantity)}</span>
                       </td>
                       {/*Botao Delete Pokemon*/}
                       <td className="delete-button-container">
-                        <button type='button' onClick={() => handleDeletePokemon(pokemon)}>
+                        <Styled.DeleteButton type='button' onClick={() => handleDeletePokemon(pokemon)}>
                           <FiTrash size="22px" color='black' />
-                        </button>
+                        </Styled.DeleteButton>
                       </td>
                     </Styled.Tr>
                   ))}
@@ -117,11 +121,11 @@ export default function Cart() {
                   <tr>
                     <td>
                       <div>
-                        <button >
-                          Finalizar Pedido
+                        <button onClick={() => navigate("../home")}>
+                          Continuar Comprando
                         </button>
-                        <button >
-                          Finalizar Pedido
+                        <button onClick={() => setVisible(true)}>
+                          Finalizar Compra
                         </button>
                         <div>
                           <p>Total:</p>
@@ -136,6 +140,7 @@ export default function Cart() {
           </Styled.Content>
         )}
       </Styled.Container>
+      {visible ? <Modal close={() => setVisible(false)} /> : null}
 
     </>
   );

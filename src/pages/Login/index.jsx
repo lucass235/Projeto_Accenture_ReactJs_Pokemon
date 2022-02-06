@@ -31,7 +31,7 @@ export default function Chart() {
     const users = JSON.parse(localStorage.getItem("users"))
     const res = await users.map(user => {
       if (data.email === user.email && data.senha === user.senha){
-        localStorage.setItem("Autenticado", "true");
+        localStorage.setItem("Autenticado", JSON.stringify(user));
         navigate('/home');
         return true
       }

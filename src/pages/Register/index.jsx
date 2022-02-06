@@ -1,7 +1,6 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
-import { Formik } from 'formik';
 import {FormControl, Button, TextField, MenuItem}  from '@mui/material';
 import logo from './Assets/logo.png'
 import * as yup from 'yup';
@@ -67,13 +66,11 @@ export default function Register() {
     {
       seterrorName(true)
     }
-    console.log(errors)
   }
   },[seterrorEmail, seterrorPasswd, seterrorName, gen, country, errorName, errorPasswd, errorEmail]);
 
   const handleChange = (event) => {
     setGen(event.target.value);
-    console.log(gen)
   };
 
   const handleChangeC = (event) => {

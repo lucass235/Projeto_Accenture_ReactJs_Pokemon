@@ -20,19 +20,19 @@ export const countries = [
 
 export const gens = [
   {
-    value: 'fem',
+    value: 'Feminino',
     label: 'Feminino',
   },
   {
-    value: 'mas',
+    value: 'Masculino',
     label: 'Masculino',
   },
   {
-    value: 'others',
+    value: 'Outros',
     label: 'Outros',
   },
   {
-    value: 'nDeclarar',
+    value: 'Prefiro não declarar',
     label: 'Prefiro não declarar',
   },
 ];

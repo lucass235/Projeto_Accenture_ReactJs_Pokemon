@@ -19,6 +19,12 @@ import Modal from 'react-modal';
 import PokeAPI from '../../assets/pokeapi-logo.png';
 import Styled from './styles.js';
 import { Button, TextField } from '@mui/material';
+import { useCallback } from 'react';
+import * as yup from 'yup';
+import getValidationErros from '../../constants/getValidationError';
+import {countries, gens} from '../../constants/lists' 
+
+
 
 const customStyles = {
   content: {
@@ -38,6 +44,15 @@ const customStyles = {
 export default function Header({handleOpen}) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [errorName, seterrorName] = useState(false);
+  const [errorFuncao, seterrorFuncao] = useState(false);
+  Modal.setAppElement('#root');
+  const [userLog, setuserLog] = useState(() => 
+  {
+    const log = JSON.parse(localStorage.getItem("Autenticado"))
+    return log;
+  });
+
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
   
@@ -64,7 +79,7 @@ export default function Header({handleOpen}) {
   const handlePerfil = () =>{
     if (isAuthenticader === "false"){
       navigate('/')
-    } else if (isAuthenticader === "true"){
+    } else {
       handleOpenProfile()
     }
   }
@@ -73,12 +88,73 @@ export default function Header({handleOpen}) {
     setIsOpen(true)
   }
 
+  const [gen, setGen] = useState(() => {return userLog.genero});
+  const [country, setCountry] = useState(() => {return userLog.pais})
+  const [oldData, setoldData] = useState([])
+
+  const handleAttProfile = useCallback( async () => {
+    try{
+      seterrorName(false)
+      seterrorFuncao(false)
+      const data = {
+        name: document.getElementById("perfilNome").value,
+        email: userLog.email,
+        senha: userLog.senha,
+        imagem: "teste",
+        genero: gen,
+        pais: country,
+        funcao: document.getElementById("funçãoOrigem").value
+      }
+      
+    let schema = yup.object().shape({
+      name: yup.string().required("Nome obrigatorio"),
+      funcao: yup.string().required("função obrigatoria"),
+      email: yup.string(),
+      senha: yup.string(),
+      pais: yup.string(),
+      genero: yup.string(),
+      image: yup.string(),
+    });
+    
+    await schema.validate(data, {abortEarly: false})
+      setuserLog(data)
+      setoldData(() => {
+        JSON.parse(localStorage.getItem("users"))
+      })
+      console.log(oldData)
+      const newData = oldData.filter((user) => 
+        user.email !== userLog.email && user.senha !== userLog.senha
+      )
+      setoldData([...newData, data])
+      localStorage.setItem("users", JSON.stringify(oldData))
+      localStorage.setItem("Autenticado", JSON.stringify(userLog))
+
+    }
+    catch(error){
+      console.log(error)
+       const errors = getValidationErros(error)
+      if (errors.name)
+      {
+        seterrorName(true)
+      }
+      if (errors.funcao)
+      {
+      seterrorFuncao(true)
+      }
+    }},[gen, country, seterrorName, seterrorFuncao, setuserLog, userLog, oldData, setoldData])
+
+    const handleChange = (event) => {
+      setGen(event.target.value);
+    };
+  
+    const handleChangeC = (event) => {
+      setCountry(event.target.value);
+    };
+
   const BOX_STYLES = {
     backgroundColor: '#FFF',
   };
 
-  const users = JSON.parse(localStorage.getItem("users"))
-  console.log(users)
 
   return (
     <>
@@ -97,17 +173,43 @@ export default function Header({handleOpen}) {
       <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2tgQ6O5s4XE6-Q7ItFa-pLoNhk4zQF464CQ&usqp=CAU'} />
       </Styled.Avatar_Container>
       <Styled.ContentForm>
-      <TextField id="perfilNome" label="Nome" variant="outlined" />
-      <TextField id="perfilGenero" label="Gênero" variant="outlined" />
-      <Styled.Buttom>
-      <Button variant="outlined" size="medium" color="error">
-        Salvar
-      </Button>
-      </Styled.Buttom>
+          {errorName ? <TextField error helperText="O campo não pode ser vazio" id="perfilNome" label="Nome" variant="outlined" defaultValue={userLog.name}/> :  <TextField id="perfilNome" label="Nome" variant="outlined" defaultValue={userLog.name}/>}
+          <TextField
+            id="registroGenero"
+            select
+            label="Gênero"
+            value={gen}
+            onChange={handleChange}
+            defaultValue={userLog.genero}
+          >
+            {gens.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        <Styled.Buttom>
+          <Button onClick={handleAttProfile} variant="outlined" size="medium" color="error">
+            Salvar
+          </Button>
+        </Styled.Buttom>
       </Styled.ContentForm>
       <Styled.ContentForm>
-      <TextField id="perfilOrigem" label="Origem" variant="outlined" />
-      <TextField id="funçãoOrigem" label="Função" variant="outlined" />
+        <TextField
+          id="registroPais"
+          select
+          label="Pais"
+          value={country}
+          onChange={handleChangeC}
+          defaultValue={userLog.pais}
+        >
+          {countries.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        {errorFuncao ? <TextField id="funçãoOrigem" error helperText="Incorrect entry" label="Função" variant="outlined" defaultValue={userLog.funcao}/> : <TextField id="funçãoOrigem" label="Função" variant="outlined" defaultValue={userLog.funcao}/>}
       <Styled.Buttom>
       <Button onClick={ () => navigate('/home') } variant="outlined" size="medium" color="error">
         Voltar
@@ -170,11 +272,11 @@ export default function Header({handleOpen}) {
                       <AccountCircleOutlinedIcon />
                     </Badge>
                   </IconButton>
-                  { isAuthenticader === "true" ?  <IconButton onClick={ () => handleLogout() } size="large">
+                  { isAuthenticader === "false" ?  null : <IconButton onClick={ () => handleLogout() } size="large">
                     <Badge color="primary">
                       <LogoutOutlinedIcon />
                     </Badge>
-                  </IconButton> : null}
+                  </IconButton>}
                 </div>
               )}
             </div>

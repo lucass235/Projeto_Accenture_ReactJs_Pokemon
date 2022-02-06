@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Chart() {
+export default function Cart() {
   return (
     <div>
       <h1>Carrinho</h1>

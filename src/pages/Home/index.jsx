@@ -24,9 +24,7 @@ const GRID_STYLES = {
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [visible, setVisible] = useState(6);
-  const [price, setPrice] = useState(new Intl.NumberFormat('pt-br',
-  { style: 'currency', currency: 'BRL' })
-    .format(Math.floor(Math.random() * 100000) + 1))
+  const [price, setPrice] = useState(Math.floor(Math.random() * 100000) + 1)
   const { pokemons } = useSelector(state => state.pokemon);
   const dispatch = useDispatch();
 
@@ -54,7 +52,7 @@ export default function Home() {
         <>
           <Header/>
           <S.Container>
-        
+
             <Grid style={ GRID_STYLES } container spacing={4}>
               {pokemons && pokemons.slice(0, visible).map((pokemon, idx) => (
                 <Grid key={idx} item xs={12} sm={6} md={4}>

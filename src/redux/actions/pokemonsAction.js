@@ -1,6 +1,31 @@
-import { ADD_POKEMON_CART } from '../../constants';
+import {
+  ADD_POKEMON_CART,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
+  DELETE_POKEMON_CART
+} from '../../constants';
 
-export const addPokemon = (pokemon) => ({
+export const addPokemon = (pokemon, price, pokemonId, quantity) => ({
   type: ADD_POKEMON_CART,
-  pokemon
+  payload:  {
+    pokemon,
+    price,
+    pokemonId,
+    quantity
+  }
+});
+
+export const increaseQuantity = (payload) => ({
+  type: INCREASE_QUANTITY,
+  payload
+});
+
+export const decreaseQuantity = (payload) => ({
+  type: DECREASE_QUANTITY, 
+  payload
+})
+
+export const deletePokemonCart = (payload) => ({
+  type: DELETE_POKEMON_CART,
+  payload,
 });

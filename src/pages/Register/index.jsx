@@ -83,10 +83,10 @@ export default function Register() {
           <Styled.Content>
           <img src={logo} width="30%" alt="" />
           <FormControl style={{width:'90%'}} >
-            { errorName ? <TextField label={'Nome'} type="text" id="registroNome" margin="dense" error helperText="Incorrect entry."/> : 
+            { errorName ? <TextField label={'Nome'} type="text" id="registroNome" margin="dense" error helperText="Campo obrigatorio"/> : 
             <TextField label={'Nome'} type="text" id="registroNome" margin="dense"/> }
-            { errorEmail ? <TextField label={'E-mail'} type="email" id="registroEmail" margin="dense" error helperText="Incorrect entry." /> : <TextField label={'E-mail'} type="email" id="registroEmail"  margin="dense" /> }
-            { errorPasswd ? <TextField label={'Senha'} type="password" id="registroSenha" margin="dense"  error helperText="Incorrect entry." /> : <TextField label={'Senha'} type="password" id="registroSenha" margin="dense" />}
+            { errorEmail ? <TextField label={'E-mail'} type="email" id="registroEmail" margin="dense" error helperText="Campo obrigatorio." /> : <TextField label={'E-mail'} type="email" id="registroEmail"  margin="dense" /> }
+            { errorPasswd ? <TextField label={'Senha'} type="password" id="registroSenha" margin="dense"  error helperText="Campo obrigatorio" /> : <TextField label={'Senha'} type="password" id="registroSenha" margin="dense" />}
             <Styled.FormRegistro>
                 <TextField
                   id="registroGenero"

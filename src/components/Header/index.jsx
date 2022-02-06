@@ -189,7 +189,7 @@ export default function Header({handleOpen}) {
             ))}
           </TextField>
         <Styled.Buttom>
-          <Button onClick={handleAttProfile} variant="outlined" size="medium" color="error">
+          <Button variant="outlined" size="medium" color="error">
             Salvar
           </Button>
         </Styled.Buttom>
@@ -209,9 +209,9 @@ export default function Header({handleOpen}) {
             </MenuItem>
           ))}
         </TextField>
-        {errorFuncao ? <TextField id="funçãoOrigem" error helperText="Incorrect entry" label="Função" variant="outlined" defaultValue={userLog.funcao}/> : <TextField id="funçãoOrigem" label="Função" variant="outlined" defaultValue={userLog.funcao}/>}
+        {errorFuncao ? <TextField id="funçãoOrigem" error helperText="Campo obrigatorio" label="Função" variant="outlined" defaultValue={userLog.funcao}/> : <TextField id="funçãoOrigem" label="Função" variant="outlined" defaultValue={userLog.funcao}/>}
       <Styled.Buttom>
-      <Button onClick={ () => navigate('/home') } variant="outlined" size="medium" color="error">
+      <Button onClick={() => {setIsOpen(false)}} variant="outlined" size="medium" color="error">
         Voltar
       </Button>
       </Styled.Buttom>

@@ -38,7 +38,7 @@ export default function Chart() {
       return false
     }).filter(user => user === true)
     
-    if (res[0] !== true) alert("não") 
+    if (res[0] !== true) alert("Erro ao fazer login") 
 
     }catch(error){
     const errors = getValidationErros(error)
@@ -60,8 +60,8 @@ export default function Chart() {
           <Styled.Content>
           <img src={logo} width="30%" alt="" /> 
           <FormControl style={{width:'90%'}}  >
-          {errorEmail ? <TextField label={'E-mail'} type="email" id="loginEmail" error helperText="Incorrect entry" margin="dense" /> : <TextField label={'E-mail'} type="email" id="loginEmail" margin="dense" /> }
-          {errorPasswd ? <TextField label={'Senha'} type="password" id="loginSenha" error helperText="Incorrect entry" margin="dense" /> : <TextField label={'Senha'} type="password" id="loginSenha" margin="dense" />}
+          {errorEmail ? <TextField label={'E-mail'} type="email" id="loginEmail" error helperText="E-mail incorreto" margin="dense" /> : <TextField label={'E-mail'} type="email" id="loginEmail" margin="dense" /> }
+          {errorPasswd ? <TextField label={'Senha'} type="password" id="loginSenha" error helperText="Senha incorreta" margin="dense" /> : <TextField label={'Senha'} type="password" id="loginSenha" margin="dense" />}
           <Styled.Paragrafo href="/">Esqueci minha senha</Styled.Paragrafo>
           </FormControl>
             <Styled.ButtonLoginContent>

@@ -12,7 +12,7 @@ function PokemonCard({ pokemon, price }) {
   const pokemonId = pokemon.url.match(/\d+/g).slice(1)[0];
 
   const handleClick = () => {
-    dispatch({ type: ADD_POKEMON_CART, payload: { pokemon, price, pokemonId } });
+    dispatch({ type: ADD_POKEMON_CART, payload: { pokemon, price, pokemonId, quantity: 1 } });
   };
   
   return (

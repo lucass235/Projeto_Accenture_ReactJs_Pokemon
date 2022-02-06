@@ -5,33 +5,29 @@ import { Styled } from './styles'
 import { useNavigate } from 'react-router-dom'
 import { FiPlusCircle, FiMinusCircle, FiTrash } from "react-icons/fi";
 //import { Style } from '@mui/icons-material';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { INCREASE_QUANTITY, DECREASE_QUANTITY, DELETE_POKEMON_CART } from '../../constants';
 
 export default function Cart() {
+
+  const dispatch = useDispatch();
 
   const { cart } = useSelector(state => state.pokemon)
   console.log(cart)
 
   const navigate = useNavigate();
 
-  // function handleIncrementPokemon(pokemon) {
-  //   updatePokemonAmount({
-  //     pokemonId: pokemon.id,
-  //     amount: pokemon.amount + 1,
-  //   });
-  // }
+  function handleAddPokemon(pokemon) {
+    dispatch({ type: INCREASE_QUANTITY, payload: pokemon })
+  }
 
-  // function handleDecrementPokemon(pokemon) {
-  //   updatePokemonAmount({
-  //     pokemonId: pokemon.id,
-  //     amount: pokemon.amount - 1,
-  //   });
-  // }
+  function handleDecreasePokemon(pokemon) {
+    dispatch({ type: DECREASE_QUANTITY, payload: pokemon })
+  }
 
-  const total = cart.reduce((sumTotal, pokemon) => {
-    return sumTotal + pokemon.pokemon.price * pokemon.pokemon.amount;
-  }, 0);
-
+  function handleDeletePokemon(pokemon) {
+    dispatch({ type: DELETE_POKEMON_CART, payload: pokemon })
+  }
   function priceFormat(value) {
     return Intl.NumberFormat(
       'pt-BR', {
@@ -39,8 +35,6 @@ export default function Cart() {
       currency: 'BRL',
     }).format(value);
   }
-
-
 
   return (
 
@@ -71,20 +65,23 @@ export default function Cart() {
                 </thead>
                 <tbody>
                   {cart.map((pokemon, index) => (
-                    <Styled.Lucas key={index}>
+                    <Styled.Tr key={index}>
+                      {/*Imagem*/}
                       <td className="avatar-container">
                         <img style={{ height: 128, width: 128 }} src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.pokemonId}.png`} alt='Imagem do Pokémon' />
                       </td>
+                      {/*Nome do pokemon*/}
                       <td className="product-price-container">
                         <span>{pokemon.pokemon.name}</span>
                       </td>
+                      {/*Botao menos*/}
                       <td className="product-amount-container">
-                        <button type='button'>
+                        <button type='button' onClick={() => handleDecreasePokemon(pokemon)}>
                           <FiMinusCircle size="18px" color="black" />
                         </button>
-                        <input type="text" id="amount" name="amount" readOnly value={pokemon.amount}  >
+                        <input type="text" id="amount" name="amount" readOnly value={pokemon.quantity}  >
                         </input>
-                        <button type='button'>
+                        <button type='button' onClick={() => handleAddPokemon(pokemon)}>
                           <FiPlusCircle size="18px" color="black" />
                         </button>
                       </td>
@@ -95,11 +92,11 @@ export default function Cart() {
                         <span></span>
                       </td>
                       <td className="delete-button-container">
-                        <button type='button'>
+                        <button type='button' onClick={() => handleDeletePokemon(pokemon)}>
                           <FiTrash size="22px" color='black' />
                         </button>
                       </td>
-                    </Styled.Lucas>
+                    </Styled.Tr>
                   ))}
                 </tbody>
                 <tfoot>
@@ -125,4 +122,6 @@ export default function Cart() {
 
     </>
   );
-};
+
+}
+

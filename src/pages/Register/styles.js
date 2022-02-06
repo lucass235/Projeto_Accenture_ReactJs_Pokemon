@@ -46,4 +46,12 @@ export const Styled = {
         color: #808080;
         text-decoration: none;
     `,
+        FormRegistro : styled.div `
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
+        gap: 20px;
+        margin-top: 10px;
+    `,
+
 };

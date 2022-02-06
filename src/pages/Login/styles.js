@@ -44,4 +44,6 @@ export const Styled = {
         color: #808080;
         text-decoration: none;
     `,
+
+
 };

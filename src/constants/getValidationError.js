@@ -1,10 +1,10 @@
 import { ValidationError } from "yup";
 
 
-export default function getValidationErros(err) {
+export default function getValidationErros(ValidationError) {
   const validationError = {};
 
-  err.inner.forEach((error) => {
+  ValidationError.inner.forEach((error) => {
     validationError[error.path || ""] = error.message;
   });
 

@@ -66,12 +66,62 @@ export const Styled = {
     }
   `,
 
-  Lucas: styled.tr`
+  Tr: styled.tr`
     height: 12rem;
     font-size: 16px;
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
 
     
-  `
+  `,
+
+  Input: styled.input`
+    text-align: center;
+    height: 36px;
+    width: 44px;
+    padding:0 0.4rem;
+    margin: 0 0.2rem;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    color: "#717171";
+    outline: transparent;
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    height: 2rem;
+    width: 2.4rem;
+  }
+`,
+AmountButton: styled.button`
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s;
+    &:hover:not([disabled]){
+      background-color: #E8E8E8;
+    }
+    &:active{
+      filter: brightness(0.7);
+    }
+    &:disabled{
+      cursor: not-allowed;
+    }
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      height: 1.5rem;
+      width: 1.5rem;
+      overflow: hidden;
+    }
+  `,
+
+  DeleteButton: styled.button`
+    width: 2rem;
+    height: 2rem;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    &:active{
+      background-color: #E8E8E8;
+    }
+  `,
+
 }

@@ -1,12 +1,11 @@
 import React from 'react';
 import Header from '../../components/Header'
-//import ImgPoke from '../../assets/pokemon.png';
 import { Styled } from './styles'
 import { useNavigate } from 'react-router-dom'
 import { FiPlusCircle, FiMinusCircle, FiTrash } from "react-icons/fi";
-//import { Style } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
 import { INCREASE_QUANTITY, DECREASE_QUANTITY, DELETE_POKEMON_CART } from '../../constants';
+import { Style } from '@mui/icons-material';
 
 export default function Cart() {
 
@@ -28,6 +27,15 @@ export default function Cart() {
   function handleDeletePokemon(pokemon) {
     dispatch({ type: DELETE_POKEMON_CART, payload: pokemon })
   }
+
+  const teste = cart.map(pokemon => {
+    return (Number(cart[0].price.substring(3, cart[0].price[cart[0].length])) * pokemon.quantity)
+  })
+
+  console.log(cart[0].price.substring(3, cart[0].price[cart[0]]))
+
+  console.log(teste)
+
   function priceFormat(value) {
     return Intl.NumberFormat(
       'pt-BR', {
@@ -70,27 +78,31 @@ export default function Cart() {
                       <td className="avatar-container">
                         <img style={{ height: 128, width: 128 }} src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.pokemonId}.png`} alt='Imagem do Pokémon' />
                       </td>
-                      {/*Nome do pokemon*/}
+                      {/*Nome do Pokemon*/}
                       <td className="product-price-container">
                         <span>{pokemon.pokemon.name}</span>
                       </td>
-                      {/*Botao menos*/}
+                      {/*Botao Menos*/}
                       <td className="product-amount-container">
-                        <button type='button' onClick={() => handleDecreasePokemon(pokemon)}>
+                        <Styled.AmountButton type='button' onClick={() => handleDecreasePokemon(pokemon)}>
                           <FiMinusCircle size="18px" color="black" />
-                        </button>
-                        <input type="text" id="amount" name="amount" readOnly value={pokemon.quantity}  >
-                        </input>
-                        <button type='button' onClick={() => handleAddPokemon(pokemon)}>
+                        </Styled.AmountButton>
+                        <Styled.Input type="text" id="amount" name="amount" readOnly value={pokemon.quantity}  >
+                        </Styled.Input>
+                        {/*Botao Mais*/}
+                        <Styled.AmountButton type='button' onClick={() => handleAddPokemon(pokemon)}>
                           <FiPlusCircle size="18px" color="black" />
-                        </button>
+                        </Styled.AmountButton>
                       </td>
+                      {/*Preço do Pokemon*/}
                       <td className='price-container'>
                         <span>{pokemon.price}</span>
                       </td>
+                      {/*Subtotal*/}
                       <td className="subtotal-container">
                         <span></span>
                       </td>
+                      {/*Botao Delete Pokemon*/}
                       <td className="delete-button-container">
                         <button type='button' onClick={() => handleDeletePokemon(pokemon)}>
                           <FiTrash size="22px" color='black' />
@@ -106,9 +118,12 @@ export default function Cart() {
                         <button >
                           Finalizar Pedido
                         </button>
+                        <button >
+                          Finalizar Pedido
+                        </button>
                         <div>
                           <p>Total:</p>
-                          <strong>{priceFormat(total)}</strong>
+                          <strong>{priceFormat(teste)}</strong>
                         </div>
                       </div>
                     </td>

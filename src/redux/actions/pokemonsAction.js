@@ -29,3 +29,8 @@ export const deletePokemonCart = (payload) => ({
   type: DELETE_POKEMON_CART,
   payload,
 });
+
+
+export const total = cart.reduce((sumTotal, pokemon) => {
+  return sumTotal + pokemon.pokemon.price * pokemon.pokemon.amount;
+}, 0);

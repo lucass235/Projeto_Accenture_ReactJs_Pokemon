@@ -46,8 +46,8 @@ export default function Home() {
       {isLoading ? <Loading /> : (
         <>
           <Header/>
-          <Carousel />
           <S.Container>
+            <Carousel />
 
             <Grid style={ GRID_STYLES } container spacing={4}>
               {pokemons && pokemons.slice(0, visible).map((pokemon, idx) => (

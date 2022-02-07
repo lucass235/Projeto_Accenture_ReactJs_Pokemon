@@ -4,6 +4,7 @@ export const Title = styled.h1`
     font-size: 1.5em;
     text-align: center;
     color: #000000;
+    margin-bottom: 15px
 `;
 
 export const Modal = styled.div`
@@ -35,6 +36,7 @@ export const Modal = styled.div`
     text-align: center;
     font-size: 16px;
     color: #f4f4f4;
+    margin-top: 25px
     `;
 
     export const IconCloser = styled.div`

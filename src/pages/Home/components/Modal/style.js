@@ -7,8 +7,8 @@ export const Modal = styled.div`
   left: 0;
   right: 0;
   padding-top: 100px;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;

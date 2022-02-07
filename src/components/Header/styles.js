@@ -46,6 +46,7 @@ Avatar_Container: styled.div `
     justify-content: end;
     margin: 1rem;
     margin-top: 0;
+    cursor: pointer;
  `,
 
  Title: styled.h2`

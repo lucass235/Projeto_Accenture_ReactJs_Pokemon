@@ -13,7 +13,7 @@ function PokemonCard({ pokemon, price }) {
   const handleClick = () => {
     dispatch({ type: ADD_POKEMON_CART, payload: { pokemon, price, pokemonId, quantity: 1 } });
   };
-  
+
   return (
     <S.Wrapper>
         <S.Card>
@@ -24,9 +24,9 @@ function PokemonCard({ pokemon, price }) {
           />
               <div>
                 <S.Title>{pokemon.name}</S.Title>
-                <S.Details onClick={ () => {
-                  setVisible(true);
-                } }>+detalhes</S.Details>
+                <S.Details onClick={ () => { setVisible(true) } }>
+                  +detalhes
+                </S.Details>
                 <S.Price>
                   { new Intl.NumberFormat('pt-br',
                       { style: 'currency', currency: 'BRL' })
@@ -34,9 +34,8 @@ function PokemonCard({ pokemon, price }) {
                 </S.Price>
               </div>
               <S.AddChartBtn onClick={ handleClick } >Adicionar no carrinho</S.AddChartBtn>
-
-              {visible ? <ModalDetails close={ () => setVisible(false) } price={price} pokemon={pokemon} /> : null }
-            </S.Card>
+              {visible ? <ModalDetails close={() => setVisible(false)} price={price} pokemon={pokemon} /> : null}
+      </S.Card>
     </S.Wrapper>
   );
 };

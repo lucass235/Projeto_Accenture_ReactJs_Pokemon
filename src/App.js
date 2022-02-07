@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { Login,
   Home,
   Cart,
@@ -7,6 +8,8 @@ import { Login,
   Profile,
   Register,
 } from './pages';
+
+import { GlobalStyle } from './styles/GlobalStyle'
 
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
         <Route path="/register" element={ <Register /> } />
         <Route path="*" element={ <NotFound /> } />
       </Routes>
+      <GlobalStyle />
     </BrowserRouter>
   );
 };

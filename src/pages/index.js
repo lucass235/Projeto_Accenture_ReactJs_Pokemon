@@ -15,5 +15,5 @@ export {
   Login,
   NotFound,
   Profile,
-  Register
+  Register,
 };

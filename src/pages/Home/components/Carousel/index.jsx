@@ -27,10 +27,10 @@ export default function Carousel() {
         style={{ height: '400px', width: '100%' }}
       >
         <SwiperSlide style={{ width: '100%'}}>
-          <img src={GrassPokemon} height="100%" />
+          <img src={GrassPokemon} alt="Slide - promoção de pokemons" />
         </SwiperSlide>
         <SwiperSlide style={{ width: '100%'}}>
-          <img src={FirePokemon} />
+          <img src={FirePokemon} alt="slide - seja um treinador pokemon" />
         </SwiperSlide>
       </Swiper>
     </div>

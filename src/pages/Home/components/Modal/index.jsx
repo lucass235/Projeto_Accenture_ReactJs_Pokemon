@@ -2,15 +2,23 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import * as S from "./style";
 import { BsXLg } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { ADD_POKEMON_CART } from '../../../../constants';
 
 function ModalDetails ({ pokemon, price, close }) {
     const [pokemonInfo, setPokemonInfo] = useState();
+    const dispatch = useDispatch();
+    const pokemonId = pokemon.url.match(/\d+/g).slice(1)[0];
    
     useEffect(() => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.url.match(/\d+/g).slice(1)[0]}`)
             .then(({ data }) => setPokemonInfo(data))
             .catch(err => console.log(err));
     }, [pokemon.url]);
+
+    const handleClick = () => {
+      dispatch({ type: ADD_POKEMON_CART, payload: { pokemon, price, pokemonId, quantity: 1 } });
+    };
 
     return (
        <>
@@ -40,7 +48,7 @@ function ModalDetails ({ pokemon, price, close }) {
                       { style: 'currency', currency: 'BRL' })
                         .format(price) }
                   </S.Price>
-                <S.Button>Adicionar ao carrinho</S.Button>
+                <S.Button onClick={handleClick}>Adicionar ao carrinho</S.Button>
                 </S.Card>
               </S.BoxRight>
             </S.Window>

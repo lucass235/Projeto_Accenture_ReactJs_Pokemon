@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
-import {FormControl, Button, TextField, Box, RedBar}  from '@mui/material';
-import logo from './Assets/logo.png'
+import { FormControl, Button, TextField }  from '@mui/material';
+import logo from '../../assets/logo.png';
 import * as yup from 'yup';
 import getValidationErros from '../../constants/getValidationError';
 

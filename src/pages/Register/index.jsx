@@ -1,12 +1,11 @@
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
-import {FormControl, Button, TextField, MenuItem}  from '@mui/material';
-import logo from './Assets/logo.png'
+import { FormControl, Button, TextField, MenuItem }  from '@mui/material';
+import logo from '../../assets/logo.png';
 import * as yup from 'yup';
 import getValidationErros from '../../constants/getValidationError';
-import {countries, gens} from '../../constants/lists' 
-
+import {countries, gens} from '../../constants/lists';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -14,14 +13,13 @@ export default function Register() {
   const [errorPasswd, seterrorPasswd] = useState(false);
   const [errorName, seterrorName] = useState(false);
   const [gen, setGen] = useState('');
-  const [country, setCountry] = useState('')
+  const [country, setCountry] = useState('');
  
-  
   const authentication = useCallback( async () => {
     try{
-    seterrorEmail(false)
-    seterrorPasswd(false)
-    seterrorName(false)
+    seterrorEmail(false);
+    seterrorPasswd(false);
+    seterrorName(false);
     const data = {
       name: document.getElementById("registroNome").value,
       email: document.getElementById("registroEmail").value,
@@ -30,8 +28,7 @@ export default function Register() {
       genero: gen,
       pais: country,
       funcao: "Aprendiz pokemon"
-    }
-    
+    };
 
     let schema = yup.object().shape({
       name: yup.string().required("Nome obrigatorio"),
@@ -53,18 +50,18 @@ export default function Register() {
     navigate("/");
 
   }catch(error){
-    const errors = getValidationErros(error)
+    const errors = getValidationErros(error);
     if (errors.email)
     {
-      seterrorEmail(true)
+      seterrorEmail(true);
     }
     if (errors.senha)
     {
-      seterrorPasswd(true)
+      seterrorPasswd(true);
     } 
     if (errors.name)
     {
-      seterrorName(true)
+      seterrorName(true);
     }
   }
   },[seterrorEmail, seterrorPasswd, seterrorName, gen, country, errorName, errorPasswd, errorEmail]);

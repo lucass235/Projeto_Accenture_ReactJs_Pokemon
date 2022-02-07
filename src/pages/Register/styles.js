@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Background from './Assets/Background.png'
-
+import Background from '../../assets/Background.png';
 
 export const Styled = {
 
@@ -53,5 +52,4 @@ export const Styled = {
         gap: 20px;
         margin-top: 10px;
     `,
-
 };

@@ -35,6 +35,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Yup](https://www.npmjs.com/package/yup#api)
 - [Styled Componenets](https://styled-components.com/docs)
 - [SwiperJs](https://swiperjs.com/react)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
 ## 🚀 Como Executar
 

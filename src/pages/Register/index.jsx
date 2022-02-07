@@ -1,13 +1,11 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, { useCallback, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
-import { Formik } from 'formik';
-import {FormControl, Button, TextField, MenuItem}  from '@mui/material';
-import logo from './Assets/logo.png'
+import { FormControl, Button, TextField, MenuItem }  from '@mui/material';
+import logo from '../../assets/logo.png';
 import * as yup from 'yup';
 import getValidationErros from '../../constants/getValidationError';
-import {countries, gens} from '../../constants/lists' 
-
+import {countries, gens} from '../../constants/lists';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -15,14 +13,13 @@ export default function Register() {
   const [errorPasswd, seterrorPasswd] = useState(false);
   const [errorName, seterrorName] = useState(false);
   const [gen, setGen] = useState('');
-  const [country, setCountry] = useState('')
+  const [country, setCountry] = useState('');
  
-  
   const authentication = useCallback( async () => {
     try{
-    seterrorEmail(false)
-    seterrorPasswd(false)
-    seterrorName(false)
+    seterrorEmail(false);
+    seterrorPasswd(false);
+    seterrorName(false);
     const data = {
       name: document.getElementById("registroNome").value,
       email: document.getElementById("registroEmail").value,
@@ -31,8 +28,7 @@ export default function Register() {
       genero: gen,
       pais: country,
       funcao: "Aprendiz pokemon"
-    }
-    
+    };
 
     let schema = yup.object().shape({
       name: yup.string().required("Nome obrigatorio"),
@@ -54,26 +50,24 @@ export default function Register() {
     navigate("/");
 
   }catch(error){
-    const errors = getValidationErros(error)
+    const errors = getValidationErros(error);
     if (errors.email)
     {
-      seterrorEmail(true)
+      seterrorEmail(true);
     }
     if (errors.senha)
     {
-      seterrorPasswd(true)
+      seterrorPasswd(true);
     } 
     if (errors.name)
     {
-      seterrorName(true)
+      seterrorName(true);
     }
-    console.log(errors)
   }
   },[seterrorEmail, seterrorPasswd, seterrorName, gen, country, errorName, errorPasswd, errorEmail]);
 
   const handleChange = (event) => {
     setGen(event.target.value);
-    console.log(gen)
   };
 
   const handleChangeC = (event) => {
@@ -86,8 +80,10 @@ export default function Register() {
           <Styled.Content>
           <img src={logo} width="30%" alt="" />
           <FormControl style={{width:'90%'}} >
-            { errorName ? <TextField label={'Nome'} type="text" id="registroNome" margin="dense" error helperText="Incorrect entry."/> : 
+            { errorName ? <TextField label={'Nome'} type="text" id="registroNome" margin="dense" error helperText="Campo obrigatorio"/> : 
             <TextField label={'Nome'} type="text" id="registroNome" margin="dense"/> }
+            { errorEmail ? <TextField label={'E-mail'} type="email" id="registroEmail" margin="dense" error helperText="Campo obrigatorio." /> : <TextField label={'E-mail'} type="email" id="registroEmail"  margin="dense" /> }
+            { errorPasswd ? <TextField label={'Senha'} type="password" id="registroSenha" margin="dense"  error helperText="Campo obrigatorio" /> : <TextField label={'Senha'} type="password" id="registroSenha" margin="dense" />}
             <Styled.FormRegistro>
                 <TextField
                   id="registroGenero"
@@ -117,13 +113,10 @@ export default function Register() {
                     </MenuItem>
                   ))}
                 </TextField>
-                
             </Styled.FormRegistro>
-            { errorEmail ? <TextField label={'E-mail'} type="email" id="registroEmail" margin="dense" error helperText="Incorrect entry." /> : <TextField label={'E-mail'} type="email" id="registroEmail"  margin="dense" /> }
-            { errorPasswd ? <TextField label={'Senha'} type="password" id="registroSenha" margin="dense"  error helperText="Incorrect entry." /> : <TextField label={'Senha'} type="password" id="registroSenha" margin="dense" />}
           </FormControl>
             <Styled.ButtonLoginContent>
-              <Button onClick={ () => authentication()} variant="outlined" size="medium" color="error">
+              <Button href="" onClick={ () => authentication()} variant="outlined" size="medium" color="error">
                 Cadastrar
               </Button>
               <Button onClick={ () => navigate('/') } variant="outlined" size="medium" color="error">
@@ -135,4 +128,3 @@ export default function Register() {
       </>
   );
 }
-

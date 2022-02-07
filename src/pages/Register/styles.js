@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Background from './Assets/Background.png'
-
+import Background from '../../assets/Background.png';
 
 export const Styled = {
 
@@ -16,7 +15,7 @@ export const Styled = {
   `,
   Content: styled.div`
       width: 25rem;
-      height: 35rem;
+      height: 30rem;
       margin-top: 5rem;
       box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
       border-radius: 6px;
@@ -53,5 +52,4 @@ export const Styled = {
         gap: 20px;
         margin-top: 10px;
     `,
-
 };

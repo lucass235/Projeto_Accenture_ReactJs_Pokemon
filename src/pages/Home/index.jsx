@@ -6,12 +6,13 @@ import { CALL_SAGA } from '../../constants';
 import * as S from './styles.js';
 import Header from '../../components/Header';
 import Loading from '../Loading';
-import PokemonCard from './components/pokemonCard';
+import PokemonCard from './components/PokemonCard';
+import Carousel from './components/Carousel';
 
 const GRID_STYLES = {
   paddingLeft: '50px',
   paddingRight: '50px',
-  paddingTop: '100px',
+  paddingTop: '30px',
 
   display: 'flex',
   alignItems: 'center',
@@ -21,10 +22,7 @@ const GRID_STYLES = {
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [visible, setVisible] = useState(6);
-  const [price, setPrice] = useState(new Intl.NumberFormat('pt-br',
-  { style: 'currency', currency: 'BRL' })
-    .format(Math.floor(Math.random() * 100000) + 1))
-
+  const [price, setPrice] = useState(Math.floor(Math.random() * 100000) + 1);
   const { pokemons } = useSelector(state => state.pokemon);
   const dispatch = useDispatch();
 
@@ -47,8 +45,8 @@ export default function Home() {
     <>
       {isLoading ? <Loading /> : (
         <>
-          <Header />
-
+          <Header/>
+          <Carousel />
           <S.Container>
 
             <Grid style={ GRID_STYLES } container spacing={4}>

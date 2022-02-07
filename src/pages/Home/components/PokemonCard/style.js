@@ -26,6 +26,10 @@ export const Title = styled.h1`
   font-size: 30px;
   color: #F2243A;
   font-weight: bold;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 export const Details = styled.span`

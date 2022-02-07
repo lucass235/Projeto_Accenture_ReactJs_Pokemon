@@ -14,7 +14,6 @@ function* asynGetPokemons() {
   yield put({ type: GET_POKEMONS, payload: response });
 };
 
-
 export default function* rootSaga() {
   yield takeLatest(CALL_SAGA, asynGetPokemons);
 };

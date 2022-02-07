@@ -6,7 +6,7 @@ import { CALL_SAGA } from '../../constants';
 import * as S from './styles.js';
 import Header from '../../components/Header';
 import Loading from '../Loading';
-import PokemonCard from './components/pokemonCard';
+import PokemonCard from './components/PokemonCard';
 import Carousel from './components/Carousel';
 
 const GRID_STYLES = {
@@ -22,10 +22,9 @@ const GRID_STYLES = {
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [visible, setVisible] = useState(6);
-  const [price, setPrice] = useState(Math.floor(Math.random() * 100000) + 1)
+  const [price, setPrice] = useState(Math.floor(Math.random() * 100000) + 1);
   const { pokemons } = useSelector(state => state.pokemon);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     setTimeout(() => {

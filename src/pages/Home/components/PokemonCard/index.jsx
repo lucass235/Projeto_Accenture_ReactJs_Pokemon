@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as S from './style';
-import { ADD_POKEMON_CART } from '../../../../constants/';
-import ModalDetails from '../../modal';
-import axios from 'axios';
+import { ADD_POKEMON_CART } from '../../../../constants';
+import ModalDetails from '../Modal';
 
 function PokemonCard({ pokemon, price }) {
   const [visible, setVisible] = useState(false);
@@ -20,6 +19,7 @@ function PokemonCard({ pokemon, price }) {
         <S.Card>
           <img
               src={`https://cdn.traction.one/pokedex/pokemon/${pokemonId}.png`}
+              alt={`pokemon ${pokemon.name}`}
               style={{ width: '150px' }}
           />
               <div>

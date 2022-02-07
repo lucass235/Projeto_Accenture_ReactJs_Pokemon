@@ -58,28 +58,28 @@ export default function Cart() {
         {cart.length === 0 ? (
           <Styled.Content>
             <h1>Seu carrinho está vazio =(</h1>
-            <button onClick={() => navigate("../home")}>
+            <Styled.ButtonContent2 onClick={() => navigate("../home")}>
               Voltar para Home
-            </button>
+            </Styled.ButtonContent2>
           </Styled.Content>
         ) : (
           <Styled.Content>
             <h1>Meu Carrinho</h1>
-            <div>
+            <Styled.TableWrapper>
               <table>
-                <thead>
+                <thead className='table-head'>
                   <tr>
-                    <th></th>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                    <th>Subtotal</th>
-                    <th></th>
+                    <th scope="col"></th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {cart.map((pokemon, index) => (
-                    <Styled.Tr key={index}>
+                    <Styled.ProductRow key={index}>
                       {/*Imagem*/}
                       <td className="avatar-container">
                         <img style={{ height: 128, width: 128 }} src={`https://cdn.traction.one/pokedex/pokemon/${pokemon.pokemonId}.png`} alt='Imagem do Pokémon' />
@@ -114,29 +114,30 @@ export default function Cart() {
                           <FiTrash size="22px" color='black' />
                         </Styled.DeleteButton>
                       </td>
-                    </Styled.Tr>
+                    </Styled.ProductRow>
                   ))}
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td>
-                      <div>
-                        <button onClick={() => navigate("../home")}>
+                    <td className='foot-row' colSpan="5">
+                      <Styled.FootRowContentWrapper>
+
+                        <Styled.ButtonContent onClick={() => navigate("../home")}>
                           Continuar Comprando
-                        </button>
-                        <button onClick={() => setVisible(true)}>
+                        </Styled.ButtonContent>
+                        <Styled.ButtonContent2 onClick={() => setVisible(true)}>
                           Finalizar Compra
-                        </button>
-                        <div>
+                        </Styled.ButtonContent2>
+                        <Styled.TotalPriceWrapper>
                           <p>Total:</p>
                           <strong>{priceFormat(total)}</strong>
-                        </div>
-                      </div>
+                        </Styled.TotalPriceWrapper>
+                      </Styled.FootRowContentWrapper>
                     </td>
                   </tr>
                 </tfoot>
               </table>
-            </div>
+            </Styled.TableWrapper>
           </Styled.Content>
         )}
       </Styled.Container>

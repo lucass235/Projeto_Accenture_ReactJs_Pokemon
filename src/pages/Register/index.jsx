@@ -1,11 +1,11 @@
-import React, { useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Styled } from './styles';
 import { FormControl, Button, TextField, MenuItem }  from '@mui/material';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/pokeapi-logo.png';
 import * as yup from 'yup';
 import getValidationErros from '../../constants/getValidationError';
-import {countries, gens} from '../../constants/lists';
+import { countries, gens } from '../../constants/lists';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -34,22 +34,21 @@ export default function Register() {
       name: yup.string().required("Nome obrigatorio"),
       email: yup.string().required("E-mail obrigatorio").email(),
       senha: yup.string().min(6, "Senha tem que ter o minimo de 6 digitos"),
-
     });
     
-    await schema.validate(data, {abortEarly: false})
-    const oldData = JSON.parse(localStorage.getItem("users"))
+    await schema.validate(data, {abortEarly: false});
+    const oldData = JSON.parse(localStorage.getItem("users"));
     if (oldData)
     {
-      const newData = oldData.concat(data)
-      localStorage.setItem("users", JSON.stringify(newData))
+      const newData = oldData.concat(data);
+      localStorage.setItem("users", JSON.stringify(newData));
     } else {
-      const newData = [data]
-      localStorage.setItem("users", JSON.stringify(newData))
+      const newData = [data];
+      localStorage.setItem("users", JSON.stringify(newData));
     }
     navigate("/");
 
-  }catch(error){
+  } catch(error) {
     const errors = getValidationErros(error);
     if (errors.email)
     {

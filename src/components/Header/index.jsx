@@ -227,7 +227,7 @@ export default function Header({handleOpen}) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar style={ BOX_STYLES }>
-          <img onClick={ () => navigate('/') } height="40" src={ PokeAPI } />
+          <img style={{ cursor: 'pointer' }} onClick={ () => navigate('../home') } height="40" src={ PokeAPI } />
           <Typography className="pointer" variant="h6" component="div" sx={{ flexGrow: 1 }}>
           </Typography>
             <div>

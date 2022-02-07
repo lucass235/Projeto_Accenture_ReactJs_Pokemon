@@ -36,7 +36,7 @@ function ModalDetails ({ pokemon, price, close }) {
                 </S.DetailsDescription>
                 <S.Card> 
                   <S.Price style={{ marginRight: 5 }}>
-                    {  new Intl.NumberFormat('pt-br',
+                    { new Intl.NumberFormat('pt-br',
                       { style: 'currency', currency: 'BRL' })
                         .format(price) }
                   </S.Price>

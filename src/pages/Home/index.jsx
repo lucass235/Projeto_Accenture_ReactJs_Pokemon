@@ -7,19 +7,17 @@ import * as S from './styles.js';
 import Header from '../../components/Header';
 import Loading from '../Loading';
 import PokemonCard from './components/pokemonCard';
-
+import Carousel from './components/Carousel';
 
 const GRID_STYLES = {
   paddingLeft: '50px',
   paddingRight: '50px',
-  paddingTop: '100px',
+  paddingTop: '30px',
 
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 };
-
-
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,13 +42,12 @@ export default function Home() {
     setVisible((prevValues) => prevValues + 3);
   };
 
-
-
   return (
     <>
       {isLoading ? <Loading /> : (
         <>
           <Header/>
+          <Carousel />
           <S.Container>
 
             <Grid style={ GRID_STYLES } container spacing={4}>

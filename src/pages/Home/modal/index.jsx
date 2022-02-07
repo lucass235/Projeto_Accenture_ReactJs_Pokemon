@@ -35,7 +35,11 @@ function ModalDetails ({ pokemon, price, close }) {
                     <p><strong>Velocidade:</strong> {pokemonInfo?.stats[5].base_stat}</p>
                 </S.DetailsDescription>
                 <S.Card> 
-                  <S.Price style={{ marginRight: 5 }}>{ price }</S.Price>
+                  <S.Price style={{ marginRight: 5 }}>
+                    {  new Intl.NumberFormat('pt-br',
+                      { style: 'currency', currency: 'BRL' })
+                        .format(price) }
+                  </S.Price>
                 <S.Button>Adicionar ao carrinho</S.Button>
                 </S.Card>
               </S.BoxRight>
